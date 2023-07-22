@@ -8,7 +8,7 @@ import {
 
 function Day(props) {
   return (
-    <div className="flex flex-col justify-center w-32 items-center mx-0.5 p-2 bg-cyan-600 bg-opacity-50 rounded-md">
+    <div className="flex flex-col justify-center w-32 items-center mx-0.5 p-2 bg-blue-600 bg-opacity-30 rounded-md">
       <h1 className="font-bold">Today</h1>
       <SunLineIcon className="my-1" />
       <ul className="flex flex-col flex-nowrap w-full">

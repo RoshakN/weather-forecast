@@ -6,7 +6,7 @@ function TemperatureAndWeather() {
     <div className="flex flex-col my-10 items-center justify-center">
       <div className="flex flex-row">
         <h1 className="text-6xl font-extrabold">32</h1>
-        <div className="self-start flex flex-row md:ml-4 lg:ml-10">
+        <div className="self-start flex flex-row">
           <CelsiusLineIcon />
         </div>
       </div>
