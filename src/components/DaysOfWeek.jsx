@@ -2,7 +2,7 @@ import Day from "./Day";
 
 function DaysOfWeek() {
   return (
-    <div className="box-border flex flex-row flex-nowrap w-3/4 justify-evenly items-center">
+    <div className="box-border flex flex-row flex-nowrap w-4/5 justify-evenly items-center">
       <Day day="0" />
       <Day day="1" />
       <Day day="2" />
