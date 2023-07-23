@@ -3,10 +3,10 @@ import Details from "./components/Details";
 import Location from "./components/Location";
 import SearchBar from "./components/SearchBar";
 import TemperatureAndWeather from "./components/TemperatureAndWeather";
-import getLocation from "./services/weatherServices";
+import getFormattedData from "./services/weatherServices";
 
 function App() {
-  const data = getLocation("london");
+  const data = getFormattedData("london");
   console.log(data);
 
   return (
