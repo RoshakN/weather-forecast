@@ -22,7 +22,50 @@ const formatLocation = (data) => {
 };
 
 const formatWeather = (data) => {
-  console.log(data);
+  let {
+    current_weather: {
+      is_day,
+      temperature,
+      time: current_time,
+      weathercode: current_weathercode,
+      windspeed,
+    },
+    daily: {
+      sunrise,
+      sunset,
+      time: daily_time,
+      weathercode: daily_weathercode,
+      temperature_2m_max: max_temp,
+      temperature_2m_min: min_temp,
+    },
+    hourly: {
+      time: hourly_time,
+      relativehumidity_2m: humidity,
+      apparent_temperature: feels_like,
+      precipitation_probability,
+      visibility,
+      uv_index,
+    },
+  } = data;
+  return {
+    is_day,
+    temperature,
+    current_time,
+    current_weathercode,
+    windspeed,
+    daily_weathercode,
+    daily_time,
+    max_temp,
+    min_temp,
+    sunrise,
+    sunset,
+    hourly_time,
+    humidity,
+    feels_like,
+    precipitation_probability,
+    visibility,
+    uv_index,
+  };
 };
 const getFormattedData = async (searchParams) => {
   const formattedData = await getLocation(searchParams).then(formatLocation);
@@ -37,7 +80,8 @@ const getFormattedData = async (searchParams) => {
     }
     return fetchWeather();
   }
-  return getWeather();
+  // const formattedWeather = await getWeather().then(formatWeather);
+  return getWeather().then(formatWeather);
 };
 
 export default getFormattedData;
