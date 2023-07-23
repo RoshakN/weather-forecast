@@ -1,4 +1,4 @@
-import SearchLineIcon from "remixicon-react/SearchLineIcon";
+import { Search } from "react-flaticons";
 
 function SearchBar() {
   return (
@@ -6,9 +6,12 @@ function SearchBar() {
       <input
         type="text"
         placeholder="Search city name..."
-        className="rounded-sm flex-auto text-neutral-950 outline-none pl-[5px] bg-neutral-100"
+        className="rounded-sm flex-auto text-neutral-950 outline-none pl-[10px] bg-neutral-100 p-2"
       />
-      <SearchLineIcon className="ml-2 hover:cursor-pointer active:fill-teal-900" />
+      <Search
+        size={30}
+        className="ml-2 hover:cursor-pointer active:fill-teal-900"
+      />
     </div>
   );
 }

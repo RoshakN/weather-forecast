@@ -1,7 +1,7 @@
-import SunLineIcon from "remixicon-react/SunLineIcon";
 import {
   SunriseAlt,
   Sunset,
+  CloudSun,
   TemperatureUp,
   TemperatureDown,
 } from "react-flaticons";
@@ -10,7 +10,7 @@ function Day(props) {
   return (
     <div className="flex flex-col justify-center w-32 items-center mx-0.5 p-2 bg-blue-600 bg-opacity-30 rounded-md">
       <h1 className="font-bold">Today</h1>
-      <SunLineIcon className="my-1" />
+      <CloudSun className="my-1" />
       <ul className="flex flex-col flex-nowrap w-full">
         <li className="flex justify-between items-center my-1">
           <SunriseAlt size="14px" />
