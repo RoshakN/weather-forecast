@@ -11,9 +11,9 @@ function TemperatureAndWeather(props) {
         </div>
       </div>
       <p className="mt-3 mb-6 text-sm">
-        Feels like <span>fake {props.weather.temperature}°</span>
+        Feels like <span>{props.weather.feels_like}°</span>
       </p>
-      <p className="font-semibold">Cloudy</p>
+      <p className="font-semibold">{props.weather.current_weathercode}</p>
       <CloudSun className="mt-2" />
     </div>
   );
