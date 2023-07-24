@@ -26,7 +26,11 @@ const formatWeather = (data) => {
     hourly: { time: hourly_time },
     current_weather: { time: current_time },
   } = data;
-  const currentIndex = hourly_time.indexOf(current_time);
+
+  const current_time_edited =
+    current_time.slice(0, 14) + "0" + current_time[15];
+
+  const currentIndex = hourly_time.indexOf(current_time_edited);
   let {
     current_weather: {
       is_day,
@@ -73,6 +77,8 @@ const formatWeather = (data) => {
     rain_probability,
     current_visibility,
     current_uv_index,
+    apparent_temperature,
+    current_time_edited,
   };
 };
 const getFormattedData = async (searchParams) => {
