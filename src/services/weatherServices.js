@@ -23,10 +23,15 @@ const formatLocation = (data) => {
 
 const formatWeather = (data) => {
   let {
+    hourly: { time: hourly_time },
+    current_weather: { time: current_time },
+  } = data;
+  const currentIndex = hourly_time.indexOf(current_time);
+  console.log(currentIndex);
+  let {
     current_weather: {
       is_day,
       temperature,
-      time: current_time,
       weathercode: current_weathercode,
       windspeed,
     },
@@ -39,15 +44,18 @@ const formatWeather = (data) => {
       temperature_2m_min: min_temp,
     },
     hourly: {
-      time: hourly_time,
-      relativehumidity_2m: humidity,
-      apparent_temperature: feels_like,
+      relativehumidity_2m,
+      apparent_temperature,
       precipitation_probability,
       visibility,
       uv_index,
     },
   } = data;
-
+  const humidity = relativehumidity_2m[currentIndex];
+  const feels_like = apparent_temperature[currentIndex];
+  const rain_probability = precipitation_probability[currentIndex];
+  const current_visibility = visibility[currentIndex];
+  const current_uv_index = uv_index[currentIndex];
   return {
     is_day,
     temperature,
@@ -63,9 +71,9 @@ const formatWeather = (data) => {
     hourly_time,
     humidity,
     feels_like,
-    precipitation_probability,
-    visibility,
-    uv_index,
+    rain_probability,
+    current_visibility,
+    current_uv_index,
   };
 };
 const getFormattedData = async (searchParams) => {

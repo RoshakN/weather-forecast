@@ -1,17 +1,17 @@
 import CelsiusLineIcon from "remixicon-react/CelsiusLineIcon";
 import { CloudSun } from "react-flaticons";
 
-function TemperatureAndWeather() {
+function TemperatureAndWeather(props) {
   return (
     <div className="flex flex-col my-6 items-center justify-center">
       <div className="flex flex-row">
-        <h1 className="text-6xl font-extrabold">32</h1>
+        <h1 className="text-6xl font-extrabold">{props.weather.temperature}</h1>
         <div className="self-start flex flex-row">
           <CelsiusLineIcon />
         </div>
       </div>
       <p className="mt-3 mb-6 text-sm">
-        Feels like <span>36°</span>
+        Feels like <span>fake {props.weather.temperature}°</span>
       </p>
       <p className="font-semibold">Cloudy</p>
       <CloudSun className="mt-2" />

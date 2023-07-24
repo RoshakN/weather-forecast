@@ -1,6 +1,11 @@
 import { Search } from "react-flaticons";
 
 function SearchBar(props) {
+  const handleEnter = (event) => {
+    if (event.key === "Enter") {
+      props.handleClick();
+    }
+  };
   return (
     <div className="flex flex-row items-center justify-center flex-nowrap w-fit md:w-4/5 mt-3 mb-6">
       <input
@@ -8,6 +13,7 @@ function SearchBar(props) {
         placeholder="Search city name..."
         className="rounded-sm flex-auto text-neutral-950 outline-none pl-[10px] bg-neutral-100 p-2"
         onChange={props.handleChange}
+        onKeyDown={handleEnter}
       />
       <Search
         size={30}
