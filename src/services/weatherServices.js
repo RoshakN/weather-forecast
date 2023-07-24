@@ -27,7 +27,6 @@ const formatWeather = (data) => {
     current_weather: { time: current_time },
   } = data;
   const currentIndex = hourly_time.indexOf(current_time);
-  console.log(currentIndex);
   let {
     current_weather: {
       is_day,
