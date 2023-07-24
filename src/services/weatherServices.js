@@ -17,8 +17,8 @@ function getLocation(locationName) {
 }
 
 const formatLocation = (data) => {
-  const { latitude, longitude } = data;
-  return { latitude, longitude };
+  const { latitude, longitude, name: city_name } = data;
+  return { latitude, longitude, city_name };
 };
 
 const formatWeather = (data) => {
@@ -47,6 +47,7 @@ const formatWeather = (data) => {
       uv_index,
     },
   } = data;
+
   return {
     is_day,
     temperature,
@@ -71,7 +72,7 @@ const getFormattedData = async (searchParams) => {
   const formattedData = await getLocation(searchParams).then(formatLocation);
 
   const newUrl = `https://api.open-meteo.com/v1/forecast?latitude=${formattedData.latitude}&longitude=${formattedData.longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,weathercode,visibility,uv_index,is_day&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto`;
-
+  const cityName = { city: formattedData.city_name };
   function getWeather() {
     async function fetchWeather() {
       const res = await Axios.get(newUrl);
@@ -80,8 +81,12 @@ const getFormattedData = async (searchParams) => {
     }
     return fetchWeather();
   }
-  // const formattedWeather = await getWeather().then(formatWeather);
-  return getWeather().then(formatWeather);
+  const weatherData = await getWeather().then(formatWeather);
+  const mergedData = Object.assign(weatherData, cityName);
+  return mergedData;
 };
-
+const getIconFromCode = (weathercode) => {
+  console.log("Weather Code:" + weathercode);
+};
+export { getIconFromCode };
 export default getFormattedData;
