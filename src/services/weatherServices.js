@@ -9,11 +9,6 @@ function getLocation(locationName) {
     return data;
   }
   return fetchData();
-  // console.log(fetchData());
-  // const { country_code, name, latitude, longitude } = fetchData().then(
-  //   (data) => data
-  // );
-  // return { country_code, name, latitude, longitude };
 }
 
 const formatLocation = (data) => {
@@ -59,7 +54,29 @@ const formatWeather = (data) => {
   const rain_probability = precipitation_probability[currentIndex];
   const current_visibility = visibility[currentIndex];
   const current_uv_index = uv_index[currentIndex];
+  // const sunriseTime = sunrise.slice(0, 5);
+  // console.log(sunriseTime);
+  let dailyDetails = [];
+  daily_time.slice(0, 5).map((t, index) => {
+    dailyDetails[index] = { date: t };
+  });
+  daily_weathercode.slice(0, 5).map((w, index) => {
+    dailyDetails[index] = { ...dailyDetails[index], weathercode: w };
+  });
+  max_temp.slice(0, 5).map((t, index) => {
+    dailyDetails[index] = { ...dailyDetails[index], max_temp: t };
+  });
+  min_temp.slice(0, 5).map((t, index) => {
+    dailyDetails[index] = { ...dailyDetails[index], min_temp: t };
+  });
+  sunrise.slice(0, 5).map((t, index) => {
+    dailyDetails[index] = { ...dailyDetails[index], sunrise: t };
+  });
+  sunset.slice(0, 5).map((t, index) => {
+    dailyDetails[index] = { ...dailyDetails[index], sunset: t };
+  });
   return {
+    dailyDetails,
     is_day,
     temperature,
     current_time,
@@ -77,7 +94,6 @@ const formatWeather = (data) => {
     rain_probability,
     current_visibility,
     current_uv_index,
-    apparent_temperature,
     current_time_edited,
   };
 };
