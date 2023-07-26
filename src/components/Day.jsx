@@ -16,7 +16,7 @@ function Day(props) {
   const dayName =
     weather.daily_time[index] === weather.current_time.slice(0, 10)
       ? "Today"
-      : "Tomorrow";
+      : "Sun";
   return (
     <div className="flex flex-col justify-center w-32 items-center mx-0.5 p-2 bg-blue-600 bg-opacity-30 rounded-md">
       <h1 className="font-bold">{dayName}</h1>

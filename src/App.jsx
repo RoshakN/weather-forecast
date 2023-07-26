@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useEffect, useState } from "react";
 import DaysOfWeek from "./components/DaysOfWeek";
 import Details from "./components/Details";
@@ -32,12 +33,12 @@ function App() {
       <div className="mx-auto max-w-sm transform ease-out md:max-w-screen-md lg:max-w-screen-lg mt-4 py-5 px-10 bg-gradient-to-br from bg-blue-400 to to-blue-600 h-fit shadow-md shadow-gray-400 text-neutral-50 flex flex-col items-center justify-center rounded-md">
         <SearchBar handleChange={handleChange} handleClick={handleClick} />
         {weather && (
-          <div className="mx-auto max-w-sm transform ease-out md:max-w-screen-md lg:max-w-screen-lg mt-4 py-5 px-10 bg-gradient-to-br from bg-blue-400 to to-blue-600 h-fit shadow-md shadow-gray-400 text-neutral-50 flex flex-col items-center justify-center rounded-md">
+          <React.Fragment>
             <Location />
             <TemperatureAndWeather />
             <Details />
             <DaysOfWeek />
-          </div>
+          </React.Fragment>
         )}
       </div>
     </WeatherContext.Provider>

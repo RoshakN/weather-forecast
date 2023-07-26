@@ -7,7 +7,6 @@ function DaysOfWeek() {
       <Day day="1" />
       <Day day="2" />
       <Day day="3" />
-      <Day day="4" />
     </div>
   );
 }
