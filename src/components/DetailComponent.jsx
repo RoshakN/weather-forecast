@@ -1,11 +1,7 @@
 import { Sun, Eye, Humidity, Raindrops } from "react-flaticons";
 
 function DetailComponent(props) {
-  // const getDetailIcon = ({ icon }) => {
-  //   const DetailIcon = icon;
-  //   return DetailIcon;
-  // };
-  // const IconName = getDetailIcon(props.icon);
+  // A ternary to decide which icon to show for each one of the details (humidity, visibility, chance of rain, and uv index)
   let DetailIcon =
     props.icon === "Humidity" ? (
       <Humidity className="my-2" />
