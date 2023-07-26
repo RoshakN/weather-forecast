@@ -115,7 +115,69 @@ const getFormattedData = async (searchParams) => {
   return mergedData;
 };
 const getIconFromCode = (weathercode) => {
-  console.log("Weather Code:" + weathercode);
+  switch (weathercode) {
+    case 0:
+      return { weatherCode: "Clear", weatherIcon: 1 };
+    case 1:
+      return {
+        weatherCode: "Mainly Clear",
+        weatherIcon: 2,
+      };
+    case 2:
+      return { weatherCode: "Partly Clear", weatherIcon: 3 };
+    case 3:
+      return { weatherCode: "Overcast", weatherIcon: 7 };
+    case 45:
+      return { weatherCode: "Fog", weatherIcon: 9 };
+    case 48:
+      return { weatherCode: "Depositing Rime Fog", weatherIcon: 9 };
+    case 51:
+      return { weatherCode: "Light Drizzle", weatherIcon: 11 };
+    case 53:
+      return { weatherCode: "Moderate Drizzle", weatherIcon: 11 };
+    case 55:
+      return { weatherCode: "Dense Drizzle", weatherIcon: 11 };
+    case 56:
+      return { weatherCode: "Light Freezing Drizzle", weatherIcon: 14 };
+    case 57:
+      return { weatherCode: "Dense Freezing Drizzle", weatherIcon: 14 };
+    case 61:
+      return { weatherCode: "Slight Rain", weatherIcon: 37 };
+    case 63:
+      return { weatherCode: "Moderate Rain", weatherIcon: 38 };
+    case 65:
+      return { weatherCode: "Heavy Rain", weatherIcon: 39 };
+    case 66:
+      return { weatherCode: "Cold Rain", weatherIcon: 17 };
+    case 67:
+      return { weatherCode: "Freezing Rain", weatherIcon: 17 };
+    case 71:
+      return { weatherCode: "Slight Snow Fall", weatherIcon: 57 };
+    case 73:
+      return { weatherCode: "Moderate Snow Fall", weatherIcon: 58 };
+    case 75:
+      return { weatherCode: "Heavy Snow Fall", weatherIcon: 59 };
+    case 77:
+      return { weatherCode: "Snow Grain", weatherIcon: 67 };
+    case 80:
+      return { weatherCode: "Slight Rain Shower", weatherIcon: 21 };
+    case 81:
+      return { weatherCode: "Moderate Rain Shower", weatherIcon: 24 };
+    case 82:
+      return { weatherCode: "Violent Rain Shower", weatherIcon: 27 };
+    case 85:
+      return { weatherCode: "Slight Snow Shower", weatherIcon: 47 };
+    case 86:
+      return { weatherCode: "Heavy Snow Shower", weatherIcon: 49 };
+    case 95:
+      return { weatherCode: "Thunderstorm", weatherIcon: 77 };
+    case 96:
+      return { weatherCode: "Thunderstorm, Slight Hail", weatherIcon: 77 };
+    case 99:
+      return { weatherCode: "Thunderstorm, Heavy Hail", weatherIcon: 77 };
+    default:
+      return { weatherCode: "Weather Unknown", weatherIcon: 1 };
+  }
 };
 export { getIconFromCode };
 export default getFormattedData;
