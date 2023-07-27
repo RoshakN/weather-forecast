@@ -124,7 +124,7 @@ const getIconFromCode = (weathercode) => {
         weatherIcon: 2,
       };
     case 2:
-      return { weatherCode: "Partly Clear", weatherIcon: 3 };
+      return { weatherCode: "Partly Clear", weatherIcon: 4 };
     case 3:
       return { weatherCode: "Overcast", weatherIcon: 7 };
     case 45:
