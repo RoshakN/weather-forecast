@@ -26,7 +26,6 @@ function App() {
     };
     fetchWeather();
   }, [locat]);
-  console.log(weather);
 
   return (
     <WeatherContext.Provider value={{ weather }}>
