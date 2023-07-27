@@ -1,26 +1,33 @@
 import {
   SunriseAlt,
   Sunset,
-  CloudSun,
   TemperatureUp,
   TemperatureDown,
 } from "react-flaticons";
 import { useContext } from "react";
 import { WeatherContext } from "../App";
+import { getIconFromCode } from "../services/weatherServices";
 
 function Day(props) {
   const { weather } = useContext(WeatherContext);
   const index = props.day;
-  // const date = weather.daily_time[index];
-  // console.log(date.getDay());
+
+  const date = new Date(weather.daily_time[index]);
+  const weekDay = date.toLocaleDateString("en-US", {
+    weekday: "short",
+  });
+
   const dayName =
     weather.daily_time[index] === weather.current_time.slice(0, 10)
       ? "Today"
-      : "Sun";
+      : weekDay;
+  const { weatherIcon } = getIconFromCode(weather.daily_weathercode[index]);
+  const imageSource =
+    "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/" + weatherIcon + ".svg";
   return (
     <div className="flex flex-col justify-center w-32 items-center mx-0.5 p-2 bg-blue-600 bg-opacity-30 rounded-md">
       <h1 className="font-bold">{dayName}</h1>
-      <CloudSun className="my-1" />
+      <img src={imageSource} className="w-16 my-1" />
       <ul className="flex flex-col flex-nowrap w-full">
         <li className="flex justify-between items-center my-1">
           <SunriseAlt size="14px" />
