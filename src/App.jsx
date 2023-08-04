@@ -8,8 +8,11 @@ import TemperatureAndWeather from "./components/TemperatureAndWeather";
 import getFormattedData from "./services/weatherServices";
 
 function App() {
-  const [text, setText] = useState("");
-  const [locat, setLocat] = useState("");
+  // // State for storing previously searched city in localStorage
+  const storedCity = JSON.parse(localStorage.getItem("myCity"));
+
+  const [text, setText] = useState(null);
+  const [locat, setLocat] = useState(storedCity || "London");
   const [weather, setWeather] = useState(null);
 
   const handleChange = (event) => {
@@ -20,11 +23,14 @@ function App() {
     setLocat(text);
   };
 
+  // // This useEffect runs the JS logic based on the new location and also saves the name of the searched city into the local storage of the browser after each change.
   useEffect(() => {
     const fetchWeather = async () => {
       await getFormattedData(locat).then((data) => setWeather(data));
     };
     fetchWeather();
+
+    localStorage.setItem("myCity", JSON.stringify(locat));
   }, [locat]);
 
   return (
