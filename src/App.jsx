@@ -6,8 +6,11 @@ import Location from "./components/Location";
 import SearchBar from "./components/SearchBar";
 import TemperatureAndWeather from "./components/TemperatureAndWeather";
 import getFormattedData from "./services/weatherServices";
+import { usePromiseTracker, trackPromise } from "react-promise-tracker";
+import Loading from "./components/Loading";
 
 function App() {
+  const { promiseInProgress } = usePromiseTracker();
   // // State for storing previously searched city in localStorage
   const storedCity = JSON.parse(localStorage.getItem("myCity"));
 
@@ -28,21 +31,27 @@ function App() {
     const fetchWeather = async () => {
       await getFormattedData(locat).then((data) => setWeather(data));
     };
-    fetchWeather();
+    trackPromise(fetchWeather());
 
     localStorage.setItem("myCity", JSON.stringify(locat));
   }, [locat]);
 
   return (
-    <WeatherContext.Provider value={{ weather }}>
+    <WeatherContext.Provider value={{ weather, promiseInProgress }}>
       <div className="mx-auto max-w-sm transform ease-out md:max-w-screen-md lg:max-w-screen-lg mt-4 py-5 px-10 bg-gradient-to-br from bg-blue-400 to to-blue-600 h-fit shadow-md shadow-gray-400 text-neutral-50 flex flex-col items-center justify-center rounded-md">
         <SearchBar handleChange={handleChange} handleClick={handleClick} />
         {weather && (
           <React.Fragment>
-            <Location />
-            <TemperatureAndWeather />
-            <Details />
-            <DaysOfWeek />
+            {promiseInProgress ? (
+              <Loading />
+            ) : (
+              <React.Fragment>
+                <Location />
+                <TemperatureAndWeather />
+                <Details />
+                <DaysOfWeek />
+              </React.Fragment>
+            )}
           </React.Fragment>
         )}
       </div>

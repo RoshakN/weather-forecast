@@ -15,6 +15,7 @@
     "react-dom": "^18.2.0",
     "react-flaticons": "^1.1.5",
     "react-promise-tracker": "^2.1.1",
+    "react-spinners": "^0.13.8",
     "remixicon-react": "^1.0.0"
   },
   "devDependencies": {
